@@ -78,6 +78,13 @@
             width: 120px;
             height: auto;
             object-fit: contain;
+            transform-origin: center center;
+            animation: spin 30s linear infinite; /* Continuous rotation */
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .nav-links {
@@ -211,7 +218,7 @@
 
         .metric-card {
             background: var(--glass);
-            backdrop-filter: blur(10px);
+            backdrop-fry: blur(10px);
             border: 1px solid var(--glass);
             border-radius: 1rem;
             padding: 1.5rem;
@@ -312,6 +319,10 @@
             .metrics-grid {
                 grid-template-columns: 1fr;
             }
+
+            .logo {
+                width: 100px;
+            }
         }
     </style>
 </head>
@@ -410,7 +421,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        &copy; 2025 Ukubona LLC. All rights reserved.
+        © 2025 Ukubona LLC. All rights reserved.
     </footer>
 
     <script>
@@ -429,6 +440,8 @@
             localStorage.setItem('theme', theme);
             logo.src = theme === 'dark' ? DARK_LOGO : LIGHT_LOGO;
             toggleBtn.textContent = theme === 'dark' ? '🌙' : '🌞';
+            // Ensure logo rotation persists
+            logo.style.animation = 'spin 30s linear infinite';
         }
 
         setTheme(localStorage.getItem('theme') || 'dark');
